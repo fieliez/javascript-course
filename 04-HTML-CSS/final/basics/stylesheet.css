@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* makes the set width and height override the padding*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  background-color: rgb(255, 255, 201);
+  font-family: Arial, sans-serif;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  width: 300px;
+  height: auto;
+}
+h1 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.first {
+  color: red;
+}
+#your-name {
+  background-color: rgb(248, 230, 63);
+  border: 2px solid black;
+  width: 400px;
+  padding: 25px;
+  margin-top: 30px;
+}
+input,
+button {
+  padding: 10px;
+}
+a {
+  background-color: yellowgreen;
+}
+#your-name h2 {
+  color: olivedrab;
+}
