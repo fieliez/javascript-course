@@ -60,6 +60,64 @@ const restaurant = {
   },
 };
 //////////////////////
+//// SETS
+/*
+const ordersSet = new Set([
+  "pasta",
+  "pizza",
+  "pizza",
+  "rissoto",
+  "pasta",
+  "pizza",
+]);
+console.log(ordersSet);
+
+console.log(new Set("Jonas"));
+
+console.log(ordersSet.size); /// sets use size not .length like arrays
+console.log(ordersSet.has("pizza")); // .has makes boolean true
+console.log(ordersSet.has("bread")); //  false
+ordersSet.add("garlic bread");
+ordersSet.add("garlic bread");
+ordersSet.delete("rissoto");
+console.log(ordersSet);
+
+for (const orders of ordersSet) {
+  console.log(orders);
+} 
+// example.. big use case for SETS (remove duplicate value for arrrays)
+const staff = ["waiter", "chef", "waiter", "manager", "waiter", "chef"];
+const staffUnique = [...new Set(staff)]; // putting it into a new array
+console.log(staffUnique);
+console.log(
+  new Set(["waiter", "chef", "waiter", "manager", "waiter", "chef"]).size
+); // how many unique positions there are
+
+console.log(new Set("joshuafielies").size); // how many unique letters
+*/
+/////////////////////
+/////////                MAPS            /////////////
+
+const rest = new Map();
+rest.set("name", "Nandos");
+rest.set(1, "CPT, South Africa");
+rest.set(2, "lisbon, Portugale");
+
+rest
+  .set("catagories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("closed", 23)
+  .set(true, "we are open")
+  .set(false, "we are closed");
+
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 12;
+console.log(rest.get(time > rest.get("open") && time < rest.get("closed")));
+
+//////////////////////
 // // Property names
 // const properties = Object.keys(openingHours);
 // console.log(properties);
@@ -488,4 +546,29 @@ BONUS: Create an object called 'scorers' which contains the names of
       }
 
 GOOD LUCK 😀
+
+//1,)
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1}: ${player}`);
+}
+
+//2,)
+let average = 0;
+for (const x of Object.values(game.odds)) {
+  average = average + x;
+}
+average = average / Object.values(game.odds).length;
+console.log(average);
+
+//3,)
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+// bonus
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
 */
