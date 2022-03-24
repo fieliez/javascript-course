@@ -4,8 +4,105 @@
 // const flights =
 //   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
-// // Data needed for first part of the section
+//////////////////
+///////////            WORKING WITH STRINGS           ////////////
 
+const airline = "Lufthanse Germany Airlines";
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//fix capitalization in name
+const passenger = "jOnAs";
+const passengerLower = passenger.toLowerCase();
+const passangerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passangerCorrect);
+
+//compairing email
+const email = "hello@jonas.com";
+const loginEmail = "   Hello@Jonas.Com \n";
+
+const lowerEmail = loginEmail.toLocaleLowerCase();
+const trimmedEmail = lowerEmail.trim(); // delete whitespace and
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim(); // doing it all in one line
+console.log(normalizedEmail);
+console.log(normalizedEmail === trimmedEmail);
+
+//replacing
+const priceUK = "288,97£";
+const priceUS = priceUK.replace("£", "$").replace(",", ".");
+console.log(priceUS);
+
+const announcements =
+  "All passengers come to boarding door 23. Boarding door 23!";
+console.log(announcements.replace("door", "gate")); // only replace first occurance in string
+console.log(announcements.replaceAll("door", "gate")); // replaces all occurances
+
+//Booleans
+const plane = "Airbus A320neo";
+console.log(plane.includes("A320")); // true
+console.log(plane.includes("boeing")); //false
+console.log(plane.startsWith("Airb"));
+
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log("part of new airbus family");
+}
+// practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are NOT allowed on the plane");
+  } else {
+    console.log("Welcome aboard");
+  }
+};
+checkBaggage("i have a laptop a string and a pocket knife");
+checkBaggage("some snacks and a camera");
+checkBaggage("got some socks and a gun for protection");
+// const plane = "A320";
+////basics
+// console.log(plane[0]); // postition of letter in string
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log("B737"[2]);
+
+// console.log(airline.length); // number of letters
+// console.log("B737".length);
+
+// console.log(airline.indexOf("r")); // position of letter in string note: first occurance
+// console.log(airline.lastIndexOf("e"));
+// console.log(airline.indexOf("Germany"));
+
+// console.log(airline.slice(4)); //begin perameter ie. where extration will start
+// console.log(airline.slice(10, 17)); // begin and end defined by position of the two values
+
+// console.log(airline.slice(0, airline.indexOf("Germany")));
+// console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // starting from the last space (+1 to delete space)
+
+// console.log(airline.slice(-2)); // gives the last two letter of the string
+// console.log(airline.slice(0, -1)); // goes upto but not including last letter
+
+// const checkMiddleSeat = function (seat) {
+//   // B and E are middle seats
+//   const pos = seat.slice(-1);
+
+//   if (pos === ("B" || "E")) {
+//     console.log(`${seat} is a middle seat😢`);
+//   } else {
+//     console.log(`${seat} is not a middle seat😎`);
+//   }
+// };
+// checkMiddleSeat("11t");
+
+// //how javascript does string methods
+// console.log(new String("jonas"));
+// console.log(typeof new String("jonas"));
+
+/////////////////////////////////////////////////////////
+// // Data needed for first part of the section
 const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const openingHours = {
@@ -59,8 +156,83 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+//////////////
+
+//////////////
+//////////            MAPS         ////////////
+/*
+let question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "correct🎉"],
+  [false, "try again!"],
+]);
+console.log(question);
+
+//convert object to map
+console.log(Object.entries(openingHours)); // similar to the map an arry within array
+const hoursMap = new Map(Object.entries(openingHours));
+
+//QUIZ APP
+console.log(question.get("question"));
+
+for (const [key, value] of question) {
+  if (typeof key === "number") {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+// const answer = Number(prompt("your answer"));
+console.log(answer);
+// if (answer === question.get("correct")) {
+//   console.log(question.get(true));
+// } else {
+//   console.log(question.get(false));
+// }
+console.log(question.get(answer === question.get("correct")));
+//covert map to array
+console.log([...question]);
+console.log(question.entries());
+console.log(...question.keys());
+console.log(...question.values());
+*/
 //////////////////////
-//// SETS
+/////////                MAPS-fundamentals           /////////////
+/*
+const rest = new Map();
+rest.set("name", "Nandos");
+rest.set(1, "CPT, South Africa");
+rest.set(2, "lisbon, Portugale");
+
+rest
+  .set("catagories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("closed", 23)
+  .set(true, "we are open")
+  .set(false, "we are closed");
+
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("closed")));
+
+console.log(rest.has("categories"));
+rest.delete(2);
+// rest.clear(); // to clear the whole map
+const arr = [1, 2];
+rest.set(arr, "Test");
+rest.set(document.querySelector("h1"), "Heading"); // h1 will become the key
+console.log(rest);
+console.log(rest.size);
+
+console.log(rest.get(arr));
+*/
+//////////////////////
+//////////////////          SETS               /////////////////
 /*
 const ordersSet = new Set([
   "pasta",
@@ -96,28 +268,6 @@ console.log(
 console.log(new Set("joshuafielies").size); // how many unique letters
 */
 /////////////////////
-/////////                MAPS            /////////////
-
-const rest = new Map();
-rest.set("name", "Nandos");
-rest.set(1, "CPT, South Africa");
-rest.set(2, "lisbon, Portugale");
-
-rest
-  .set("catagories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
-  .set("open", 11)
-  .set("closed", 23)
-  .set(true, "we are open")
-  .set(false, "we are closed");
-
-console.log(rest.get("name"));
-console.log(rest.get(true));
-console.log(rest.get(1));
-
-const time = 12;
-console.log(rest.get(time > rest.get("open") && time < rest.get("closed")));
-
-//////////////////////
 // // Property names
 // const properties = Object.keys(openingHours);
 // console.log(properties);
@@ -572,3 +722,68 @@ for (const player of game.scored) {
 }
 console.log(scorers);
 */
+
+///////////////////
+////////////////       Coding Challenge #3       /////////////////
+
+/* 
+Let's continue with our football betting app! This time, we have a map with 
+a log of the events that happened during the game. The values are the events
+ themselves, and the keys are the minutes in which each event happened 
+ (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened
+ (no duplicates) 
+2. After the game has finished, is was found that the yellow card from minute
+ 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average,
+ every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in
+ the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+// console.log(gameEvents);
+// //1.)
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+// //2.)
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+// //3.)
+// // const keyarr = [...gameEvents.keys()];
+// // const averageEvent = 90 / keyarr.length;
+// const average = 90 / gameEvents.size;
+// console.log(average);
+// console.log(`An event happend every ${average}min's`);
+
+// //4.)
+// for (const [key, value] of gameEvents) {
+//   // if (key <= 45) {
+//   //   console.log(`[FIRST HALF] ${key}: ${value}`);
+//   // } else if (key > 45) {
+//   //   console.log(`[SECOND HALF] ${key}: ${value}`);
+//   // }
+//   // more efficent way
+//   const half = key <= 45 ? "FIRST" : "SECOND";
+//   console.log(`[${half} HALF] ${key}: ${value}`);
+// }
+
+////////////////
