@@ -6,62 +6,88 @@
 
 //////////////////
 ///////////            WORKING WITH STRINGS           ////////////
+console.log("a+very+nice+string".split("+"));
+console.log("Jonas Schmedtmann".split(" "));
 
-const airline = "Lufthanse Germany Airlines";
+const [firstName, lastName] = "Jonas Schmedtmann".split(" ");
+const newName = ["Mr", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
 
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
+const capitalizeName = function (name) {
+  const names = name.toLowerCase().split(" ");
+  const namesUpper = [];
 
-//fix capitalization in name
-const passenger = "jOnAs";
-const passengerLower = passenger.toLowerCase();
-const passangerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1);
-console.log(passangerCorrect);
-
-//compairing email
-const email = "hello@jonas.com";
-const loginEmail = "   Hello@Jonas.Com \n";
-
-const lowerEmail = loginEmail.toLocaleLowerCase();
-const trimmedEmail = lowerEmail.trim(); // delete whitespace and
-console.log(trimmedEmail);
-
-const normalizedEmail = loginEmail.toLowerCase().trim(); // doing it all in one line
-console.log(normalizedEmail);
-console.log(normalizedEmail === trimmedEmail);
-
-//replacing
-const priceUK = "288,97£";
-const priceUS = priceUK.replace("£", "$").replace(",", ".");
-console.log(priceUS);
-
-const announcements =
-  "All passengers come to boarding door 23. Boarding door 23!";
-console.log(announcements.replace("door", "gate")); // only replace first occurance in string
-console.log(announcements.replaceAll("door", "gate")); // replaces all occurances
-
-//Booleans
-const plane = "Airbus A320neo";
-console.log(plane.includes("A320")); // true
-console.log(plane.includes("boeing")); //false
-console.log(plane.startsWith("Airb"));
-
-if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
-  console.log("part of new airbus family");
-}
-// practice exercise
-const checkBaggage = function (items) {
-  const baggage = items.toLowerCase();
-  if (baggage.includes("knife") || baggage.includes("gun")) {
-    console.log("You are NOT allowed on the plane");
-  } else {
-    console.log("Welcome aboard");
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
   }
+  console.log(namesUpper.join(" "));
 };
-checkBaggage("i have a laptop a string and a pocket knife");
-checkBaggage("some snacks and a camera");
-checkBaggage("got some socks and a gun for protection");
+
+const passenger = "jessica ann smith davis";
+capitalizeName(passenger);
+// padding
+const message = "Got to gate 23!";
+console.log(message.padStart(25, "+").padEnd(35, "+")); // fills the given length with the given padding
+console.log("Jonas".padStart(23, "+"));
+
+//////// strings 2
+// const airline = "Lufthanse Germany Airlines";
+
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+
+// //fix capitalization in name
+// const passenger = "jOnAs";
+// const passengerLower = passenger.toLowerCase();
+// const passangerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passangerCorrect);
+
+// //compairing email
+// const email = "hello@jonas.com";
+// const loginEmail = "   Hello@Jonas.Com \n";
+
+// const lowerEmail = loginEmail.toLocaleLowerCase();
+// const trimmedEmail = lowerEmail.trim(); // delete whitespace and
+// console.log(trimmedEmail);
+
+// const normalizedEmail = loginEmail.toLowerCase().trim(); // doing it all in one line
+// console.log(normalizedEmail);
+// console.log(normalizedEmail === trimmedEmail);
+
+// //replacing
+// const priceUK = "288,97£";
+// const priceUS = priceUK.replace("£", "$").replace(",", ".");
+// console.log(priceUS);
+
+// const announcements =
+//   "All passengers come to boarding door 23. Boarding door 23!";
+// console.log(announcements.replace("door", "gate")); // only replace first occurance in string
+// console.log(announcements.replaceAll("door", "gate")); // replaces all occurances
+
+// //Booleans
+// const plane = "Airbus A320neo";
+// console.log(plane.includes("A320")); // true
+// console.log(plane.includes("boeing")); //false
+// console.log(plane.startsWith("Airb"));
+
+// if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+//   console.log("part of new airbus family");
+// }
+// // practice exercise
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes("knife") || baggage.includes("gun")) {
+//     console.log("You are NOT allowed on the plane");
+//   } else {
+//     console.log("Welcome aboard");
+//   }
+// };
+// checkBaggage("i have a laptop a string and a pocket knife");
+// checkBaggage("some snacks and a camera");
+// checkBaggage("got some socks and a gun for protection");
+////////////
 // const plane = "A320";
 ////basics
 // console.log(plane[0]); // postition of letter in string
